@@ -1,0 +1,37 @@
+<div fxLayout="row row-wrap" fxLayoutAlign="start start">
+    <div fxLayout="column" *ngFor="let data of tShirtData">
+        <mat-card class="cardContent animated bounceIn">
+            <div>
+                <img src="{{ data.images[0].src }}" alt="Pics of imges" width="330px" height="500px" />
+            </div>
+            <mat-card-content>
+                <div fxLayout="row">
+                    <div fxLayout="column">
+                        <p class="m-16-08">{{ data.additionalInfo | titlecase }}</p>
+
+                        <p class="r-14">{{ data.brand | titlecase }}</p>
+                    </div>
+
+                    <span style="flex: 1 1 auto"> </span>
+                    <div fxLayout="column">
+                        <p>{{ data.price | currency: "INR" }}</p>
+                    </div>
+                </div>
+                <div fxLayout="row">
+                    <button mat-icon-button *ngIf="!data.iswl" (click)="addToWishlist(data)">
+                        <mat-icon>favorite_border</mat-icon>
+                    </button>
+                    <span style="flex: 1 1 auto"></span>
+
+                    <button mat-icon-button *ngIf="data.iswl" (click)="removeWishList(data)">
+                        <mat-icon color="accent">favorite</mat-icon>
+                    </button>
+
+                    <button mat-icon-button onclick="style='color:green'" (click)="addTocart(data)">
+                        <mat-icon class="material-symbols-outlined">shopping_bag</mat-icon>
+                    </button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

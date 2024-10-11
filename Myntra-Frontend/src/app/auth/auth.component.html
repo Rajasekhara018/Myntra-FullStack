@@ -1,0 +1,212 @@
+<div fxLayout="row" fxLayoutAlign="center center" style="padding-top: 50px;margin-bottom: 100px;">
+    <mat-card style="width: 500px;" fxLayout="row" fxLayoutAlign="center center" class="animated swing">
+        <mat-tab-group mat-align-tabs="start" color="warn">
+            <mat-tab label="Register">
+                <form #RegisterForm="ngForm">
+                    <mat-card>
+                        <br />
+                        <mat-card-content>
+                            <mat-form-field appearance="outline" style="width: 100%;">
+                                <mat-label>First Name</mat-label>
+                                <input matInput required pattern="^[a-zA-Z\s]*$" name="uname"
+                                    [(ngModel)]="dataObj.firstName" maxlength="30" #uname="ngModel" />
+                                <mat-error *ngIf="uname.errors?.['required']">
+                                    First Name required*
+                                </mat-error>
+                                <mat-error *ngIf="uname.errors?.['pattern']">
+                                    Enter only letters
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" style="width: 100%;">
+                                <mat-label>Last Name</mat-label>
+                                <input matInput required pattern="^[a-zA-Z\s]*$" name="uname1"
+                                    [(ngModel)]="dataObj.lastName" maxlength="30" #uname1="ngModel" />
+                                <mat-error *ngIf="uname1.errors?.['required']">
+                                    Last Name required*
+                                </mat-error>
+                                <mat-error *ngIf="uname1.errors?.['pattern']">
+                                    Enter only letters
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" style="width: 100%;">
+                                <mat-label>User Name</mat-label>
+                                <input matInput required pattern="^[a-zA-Z\s]*$" name="urname"
+                                    [(ngModel)]="dataObj.userName" maxlength="30" #urname="ngModel" />
+                                <mat-error *ngIf="urname.errors?.['required']">
+                                    User Name required*
+                                </mat-error>
+                                <mat-error *ngIf="urname.errors?.['pattern']">
+                                    Enter only letters
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" style="width: 100%;">
+                                <mat-label>Email</mat-label>
+                                <input matInput type="email" required
+                                    pattern="^([A-Z|a-z|0-9](\.|_){0,1})+[A-Z|a-z|0-9]\@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(gmail)\.[a-z](-?[a-z])+$"
+                                    name="uemail" [(ngModel)]="dataObj.email" #uemail="ngModel" />
+                                <mat-error *ngIf="uemail.errors?.['required']">
+                                    Email required*
+                                </mat-error>
+                                <mat-error *ngIf="uemail.errors?.['pattern']">
+                                    Invalid Email
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" style="width: 100%;">
+                                <mat-label>Password</mat-label>
+                                <input matInput type="password" placeholder="Password" required
+                                    pattern="^[a-zA-Z0-9@#$&*]{8,15}$" name="upassword" [(ngModel)]="dataObj.password"
+                                    #upassword="ngModel" />
+                                <mat-error *ngIf="upassword.errors?.['required']">
+                                    Password required*
+                                </mat-error>
+                                <mat-error *ngIf="upassword.errors?.['pattern']">
+                                    Password should contain one lowercase,uppercase,@#$&* and should be 8 characters.
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" style="width: 100%;">
+                                <mat-label>Confirm Password</mat-label>
+                                <input matInput type="password" placeholder="Password" required
+                                    pattern="^[a-zA-Z0-9@#$&*]{8,15}$" name="upassword" [(ngModel)]="confirmPassword"
+                                    #upassword="ngModel" />
+                                <mat-error *ngIf="upassword.errors?.['required']">
+                                    Password required*
+                                </mat-error>
+                                <mat-error *ngIf="upassword.errors?.['pattern']">
+                                    Password should contain one lowercase,uppercase,@#$&* and should be 8 characters.
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-hint style="color: red" *ngIf="
+                            confirmPassword != dataObj.password &&
+                            confirmPassword
+                            ">
+                                password is not matched</mat-hint>
+                            <mat-form-field appearance="outline" style="width: 100%;">
+                                <mat-label>Phone</mat-label>
+                                <input matInput type="tel" name="uphone" placeholder="Enter your PhoneNo" required
+                                    pattern="^\d{10}$" maxlength="10" [(ngModel)]="dataObj.phoneNo" #uPhone="ngModel" />
+                            </mat-form-field>
+                            <div *ngIf="uPhone.touched && uPhone.invalid">
+                                <mat-error *ngIf="uPhone.errors?.['required']">
+                                    Phone required*
+                                </mat-error>
+                                <mat-error *ngIf="uPhone.errors?.['pattern']">
+                                    Enter only numbers
+                                </mat-error>
+                            </div>
+                            <br />
+                            <mat-form-field appearance="outline" style="width: 100%;">
+                                <mat-label>Gender</mat-label>
+                                <mat-select [(ngModel)]="dataObj.gender" name="ugender" #uGender="ngModel">
+                                    <mat-option *ngFor="let g of genders" [value]="g" required>
+                                        {{ g }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <!-- <mat-form-field appearance="outline" style="width: 100%;">
+                                <mat-label>Date of Birth</mat-label>
+                                <input matInput type="datetime-local" maxlength="64" [(ngModel)]="dataObj.dob"
+                                    name="dobirt" #dobirt="ngModel">
+                            </mat-form-field> -->
+                            <!-- <input  type="datetime-local" maxlength="64" [(ngModel)]="dataObj.dob"
+                            name="dobirt" #dobirt="ngModel"> -->
+                            <mat-form-field appearance="outline" style="width: 100%;">
+                                <mat-label>Date of Birth</mat-label>
+                                <input matInput [matDatepicker]="picker" maxlength="64" [(ngModel)]="dataObj.dob"
+                                    name="dobirt" #dobirt="ngModel">
+                                <mat-datepicker-toggle matSuffix [for]="picker" id="dtpic"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                                <!-- <mat-hint>{{dateHint}}</mat-hint> -->
+                            </mat-form-field>
+                            <input  type="file" multiple='true' accept="{{acceptedType}}"
+                                (change)="uploadFile($event,'Myntra','Clothing')" *ngIf="isFileUploaded" />
+                                <!-- 'MYNTRA','MEN-CLOTHING','','' -->
+                                <mat-chip-listbox #chipList class="downloadFileChip">
+                                    <mat-chip-option *ngFor="let val of commonService.value;let i=index" (click)="downloadFile(val,i)" [removable]="removable"
+                                        ngDefaultControl style="cursor: pointer;">
+                                        <!-- <span style="width: 250px;" class="text-overflow">{{getText2ForKey(val)}}</span> -->
+                                        <span style="width: 250px;" class="text-overflow">{{val.name}}</span>
+                                        <mat-icon matChipRemove  (click)="removeFile(val)">cancel</mat-icon>
+                                    </mat-chip-option>
+                                </mat-chip-listbox>
+                            <div *ngIf="uPhone.touched && uPhone.invalid">
+                                <mat-error *ngIf="uGender.errors?.['required']">oops</mat-error>
+                            </div>
+                            <br />
+                            <button mat-raised-button color="warn" style="width: 100%;" [disabled]="RegisterForm.invalid || (confirmPassword != dataObj.password &&
+                                confirmPassword)" (click)="Register(dataObj)">
+                                Submit
+                            </button>
+                        </mat-card-content>
+                    </mat-card>
+                </form>
+            </mat-tab>
+            <mat-tab label="Login">
+                <form name="loginForm" #LoginForm="ngForm">
+                    <mat-card>
+                        <br />
+                        <mat-card-content>
+                            <!-- <mat-form-field appearance="outline" style="width: 100%;">
+                                <mat-label>Email</mat-label>
+                                <input matInput type="email" placeholder="username" required
+                                    pattern="^([A-Z|a-z|0-9](\.|_){0,1})+[A-Z|a-z|0-9]\@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(gmail)\.[a-z](-?[a-z])+$"
+                                    name="u1email" [(ngModel)]="loginObj.email" #uEmailx="ngModel" />
+                                <mat-error *ngIf="uEmailx.errors?.['required']">
+                                    Email required*
+                                </mat-error>
+                                <mat-error *ngIf="uEmailx.errors?.['pattern']">
+                                    Invalid Email
+                                </mat-error>
+                            </mat-form-field> -->
+                            <mat-form-field appearance="outline" style="width: 100%;">
+                                <mat-label>Email</mat-label>
+                                <input matInput required name="uname" [(ngModel)]="loginObj.email" maxlength="30"
+                                    #uname="ngModel" />
+                                <mat-error *ngIf="uname.errors?.['required']">
+                                    First Name required*
+                                </mat-error>
+                                <mat-error *ngIf="uname.errors?.['pattern']">
+                                    Enter only letters
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" style="width: 100%;">
+                                <mat-label>Password</mat-label>
+                                <input matInput type="password" placeholder="Password" required
+                                    pattern="^[a-zA-Z0-9@#$&*]{8,15}$" name="u1password" [(ngModel)]="loginObj.password"
+                                    #uPasswordx="ngModel" />
+                                <mat-error *ngIf="uPasswordx.errors?.['required']">
+                                    Password required*
+                                </mat-error>
+                                <mat-error *ngIf="uPasswordx.errors?.['pattern']">
+                                    Password Invalid*
+                                </mat-error>
+                            </mat-form-field>
+                            <button mat-raised-button style="width: 100%;" [disabled]="LoginForm.invalid" color="warn"
+                                (click)="LogIn(loginObj)">
+                                Submit
+                            </button>
+                            <mat-card>
+                                <!-- <asl-google-signin-button type='icon' size='medium'></asl-google-signin-button> -->
+                            </mat-card>
+                        </mat-card-content>
+                    </mat-card>
+                </form>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card>
+</div>
+<!-- <p style="color: #f44336; opacity: 1;font-weight: 600;">Remaining Time</p>
+<p style="color: #f44336; opacity: 1;font-weight: 600;">{{otpMinutes}}m :
+    {{otpSeconds}}s
+</p>
+<button mat-button color="accent" (click)="reGenerateOTP()" color="accent">
+    Resend OTP
+</button> -->
+<!-- <asl-google-signin-button *ngIf="!user"></asl-google-signin-button> -->
+
+<div *ngIf="user">
+    <img src="{{ user.photoUrl }}">
+    <div>
+        <h4>{{ user.name }}</h4>
+        <p>{{ user.email }}</p>
+    </div>
+</div>

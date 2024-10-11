@@ -1,0 +1,189 @@
+<section style="padding: 56px" *ngIf="addCart.length == 0">
+  <div>
+    <br />
+    <br />
+    <div fxLayout="column" style="width: 400px; margin: 0 auto; text-align: center">
+      <div style="text-align: center">
+        <img style="width: 240px" />
+      </div>
+
+      <h1>Hey, it feels so light!</h1>
+      <h4>There is nothing in your bag. Let's add some items.</h4>
+      <div fxLayout="column" *ngIf="btn">
+        <button mat-stroked-button color="warn" (click)="goToLanding()">
+          CONTINUE SHOPPING
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding: 20px" *ngIf="addCart.length > 0">
+  <h1>Shopping Cart {{addCart.length}} Items</h1>
+  <div fxLayout="row" fxLayoutGap="24px">
+    <div fxLayout="column" fxFlex="75">
+      <table mat-table [dataSource]="addCart" class="tablestyle animated fadeIn">
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        <div>
+          <ng-container matColumnDef="remove">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let data">
+              <button mat-icon-button (click)="delteFromcart(data.id)">
+                <mat-icon>close</mat-icon>
+              </button>
+              <!-- (click)="delteFromcart(data.id)" -->
+            </td>
+          </ng-container>
+
+        </div>
+        <div>
+          <ng-container matColumnDef="image">
+            <th mat-header-cell *matHeaderCellDef>Image</th>
+            <td mat-cell *matCellDef="let data">
+              <div>
+                <img class="imgstyle" mat-card-image src="{{ data.image }}" alt="Pics of imges" />
+              </div>
+            </td>
+          </ng-container>
+        </div>
+        <div>
+          <ng-container matColumnDef="qty">
+            <th mat-header-cell *matHeaderCellDef>Quantity</th>
+            <td mat-cell *matCellDef="let data">
+              <div>
+                <mat-form-field appearance="outline" style="margin-top: 20px;">
+                  <mat-label>Qty:</mat-label>
+                  <mat-select [(ngModel)]="data.qty" name="uquantity"
+                    (selectionChange)="updateQuantity(addCart.indexOf(data))">
+                    <mat-option *ngFor="let q of quantitydata" [value]="q">{{
+                      q
+                      }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </td>
+          </ng-container>
+        </div>
+        <div>
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef>Price</th>
+            <td mat-cell *matCellDef="let data">
+              {{ data.price | currency: "INR" }}
+            </td>
+          </ng-container>
+        </div>
+        <div>
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let data">{{ data.name }}</td>
+          </ng-container>
+        </div>
+        <div>
+          <ng-container matColumnDef="Brand">
+            <th mat-header-cell *matHeaderCellDef>Brand</th>
+            <td mat-cell *matCellDef="let data">{{ data.brand }}</td>
+          </ng-container>
+        </div>
+        <!-- <div>
+            <ng-container matColumnDef="size">
+              <th mat-header-cell *matHeaderCellDef>Size</th>
+              <td mat-cell *matCellDef="let data">{{ data.size }}</td>
+            </ng-container>
+            </div> -->
+        <div>
+          <ng-container matColumnDef="size">
+            <th mat-header-cell *matHeaderCellDef>Size</th>
+            <td mat-cell *matCellDef="let data">
+              <div>
+                <mat-form-field appearance="outline" style="margin-top: 20px;">
+                  <mat-label>size:</mat-label>
+                  <mat-select [(ngModel)]="data.size" name="size">
+                    <mat-option *ngFor="let q of Sizes" [value]="q">{{
+                      q
+                      }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </td>
+          </ng-container>
+        </div>
+        <div>
+          <ng-container matColumnDef="orderid">
+            <th mat-header-cell *matHeaderCellDef>orderid</th>
+            <td mat-cell *matCellDef="let data">{{ data.orderId }}</td>
+          </ng-container>
+        </div>
+      </table>
+    </div>
+    <div fxLayout="column" fxFlex="25">
+      <mat-card style="min-height: 250px" class="order-summary">
+        <mat-card-content>
+          <table>
+            <div class="giftwrap-based-header" style="color: green">
+              <p>GIFTING & PERSONALIZATION</p>
+            </div>
+            <div>
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvKEU_PEdzXxAOaUytwboSVSxxcAfgl_090A&usqp=CAU" />
+            </div>
+
+            <table>
+              <tr>
+                <td>Total MRP</td>
+                <td>{{ cartTotal | currency: "INR" }}</td>
+              </tr>
+              <tr>
+                <td>Discount</td>
+                <td>- {{ favoriteOffer | currency: "INR" }}</td>
+              </tr>
+            </table>
+            <mat-divider></mat-divider>
+            <table>
+              <tr>
+                <td>Total Amount</td>
+
+                <td *ngIf="favoriteOffer">
+                  {{ discountAmount | currency: "INR" }}
+                </td>
+                <td *ngIf="!favoriteOffer">
+                  {{ cartTotal | currency: "INR" }}
+                </td>
+              </tr>
+            </table>
+            <table>
+              <div class="example-button-row">
+                <!-- <button
+                    class="porder"
+                    mat-raised-button
+                    color="accent"
+                    (click)="goToPaymentPage(discountAmount)"
+                  >
+                    PLACE ORDER
+                  </button> -->
+                <div>&nbsp;</div>
+
+                <label id="example-radio-group-label"> Select your Cupon</label>
+
+                <mat-radio-group class="example-radio-group" [(ngModel)]="favoriteOffer"
+                  (change)="discountedAmount(favoriteOffer)">
+                  <mat-radio-button class="example-radio-button" *ngFor="let off of offerpercent"
+                    [value]="off.offeramount">
+                    {{ off.offeramount | currency: "INR" }} &nbsp; &nbsp;(Off/-)
+                    &nbsp; &nbsp; {{ off.cardname }}
+                  </mat-radio-button>
+                </mat-radio-group>
+                <div>
+                  Your Coupon is:{{ favoriteOffer | currency: "INR" }}(Off/-)
+                </div>
+                <button class="porder" mat-raised-button color="accent" (click)="goToPaymentPage(discountAmount)">
+                  PLACE ORDER
+                </button>
+              </div>
+            </table>
+          </table>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</section>

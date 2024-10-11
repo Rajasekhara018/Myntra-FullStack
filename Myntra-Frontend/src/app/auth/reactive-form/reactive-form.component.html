@@ -1,0 +1,30 @@
+<form [formGroup]="authForm">
+    <mat-form-field class="example-full-width">
+        <mat-label class="mb-2 label-color d-inline-block">firstname
+          <span class="text-danger">*</span>
+        </mat-label>
+        <input matInput formControlName='firstName'>
+        <mat-error *ngIf="authForm.controls['firstName'].hasError('required')">
+          first name is mandatory
+        </mat-error>
+        <!-- <mat-error *ngIf="authForm.controls['firstName'].hasError('namePattern')">
+          {{addMemberComponentProperties.FIRST_NAME_PATTERN}}
+        </mat-error> -->
+        <mat-error *ngIf="authForm.controls['firstName'].hasError('invalid length')">First name must be
+          less than or equal to 40 characters</mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label class="mb-2 label-color d-inline-block">lastname
+          <span class="text-danger">*</span>
+        </mat-label>
+        <input matInput formControlName='firstName'>
+        <mat-error *ngIf="authForm.controls['firstName'].hasError('required')">
+          last name is mandatory
+        </mat-error>
+        <!-- <mat-error *ngIf="authForm.controls['firstName'].hasError('namePattern')">
+          {{addMemberComponentProperties.FIRST_NAME_PATTERN}}
+        </mat-error> -->
+        <mat-error *ngIf="authForm.controls['firstName'].hasError('invalid length')">last name must be
+          less than or equal to 40 characters</mat-error>
+      </mat-form-field>
+</form>

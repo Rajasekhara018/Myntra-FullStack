@@ -1,0 +1,18 @@
+.cardContent{
+    width: 328px;
+    height: 650px;
+    margin: 25px;
+}
+.cardContent:hover {
+    animation-name: scale;
+}
+
+@keyframes scale {
+    from {
+        transform: scale(1,1);
+    }
+
+    to {
+        transform: scale(1.05,1.05);
+    }
+}

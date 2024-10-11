@@ -1,0 +1,134 @@
+<mat-toolbar fxLayoutGap="10px" class="toolba">
+    <div fxLayout="column" (click)="goToLanding()">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Myntra_Logo.png" style="width: 55px" />
+        <!-- <img src="https://logos-download.com/wp-content/uploads/2016/09/Myntra_logo.png" style="width: 200px" /> -->
+    </div>
+    <button mat-button [matMenuTriggerFor]="men" class="menustyle" routerLink="men">
+        MEN
+    </button>
+    <mat-menu #men="matMenu">
+        <mat-list role="list" class="menu shake" style="width: 250px;overflow-x: hidden;">
+            <!-- <p style="color: red">Topwear</p> -->
+            <mat-list-item routerLink="men/men-tshirt">T-shirts</mat-list-item>
+            <mat-list-item routerLink="men/men-casual-shirt">Casual Shirts</mat-list-item>
+            <mat-list-item routerLink="men/men-formal-shirt">Formal Shirts</mat-list-item>
+            <mat-list-item routerLink="men/men-sweat-shirt">Sweatshirts</mat-list-item>
+            <mat-list-item routerLink="men/men-sweaters">Sweaters</mat-list-item>
+            <mat-list-item routerLink="men/men-jackets">Jackets</mat-list-item>
+            <mat-list-item routerLink="men/men-blazers-coats">Blazers & Coats</mat-list-item>
+            <mat-list-item routerLink="men/men-suits">Suits</mat-list-item>
+            <mat-list-item routerLink="men/men-rain-jackets">Rain Jackets</mat-list-item>
+        </mat-list>
+    </mat-menu>
+    <button mat-button class="menustyle" routerLink="/women">
+        <p>WOMEN</p>
+    </button>
+    <!-- <mat-menu #women="matMenu">
+        <mat-list role="list" class="menu shake" style="width: 300px;overflow: hidden;">
+            <p style="color: red">Topwear</p>
+            <mat-list-item routerLink="men/men-tshirt">T-shirts</mat-list-item>
+            <mat-list-item routerLink="men/men-casual-shirt">Casual Shirts</mat-list-item>
+            <mat-list-item routerLink="men/men-formal-shirt">Formal Shirts</mat-list-item>
+            <mat-list-item routerLink="men/men-sweat-shirt">Sweatshirts</mat-list-item>
+            <mat-list-item routerLink="men/men-sweaters">Sweaters</mat-list-item>
+            <mat-list-item routerLink="men/men-jackets">Jackets</mat-list-item>
+            <mat-list-item routerLink="men/men-blazers-coats">Blazers & Coats</mat-list-item>
+            <mat-list-item routerLink="men/men-suits">Suits</mat-list-item>
+            <mat-list-item routerLink="men/men-rain-jackets">Rain Jackets</mat-list-item>
+        </mat-list>
+    </mat-menu> -->
+    <button mat-button class="menustyle" routerLink="/kids">
+        <p>KIDS</p>
+    </button>
+    <!-- <button mat-button class="menustyle">
+        <p>HOME&LIVING</p>
+    </button>
+    <button mat-button class="menustyle">
+        <p>BEAUTY</p>
+    </button> -->
+    <!-- <button mat-button [matMenuTriggerFor]="menu" class="menustyle" routerLink="men">
+        MEN
+    </button>
+    <mat-menu #menu="matMenu">
+        <mat-list role="list" class="menu shake" style="width: 300px;overflow: hidden;">
+            <p style="color: red">Topwear</p>
+            <mat-list-item routerLink="men/men-tshirt">T-shirts</mat-list-item>
+            <mat-list-item routerLink="men/men-casual-shirt">Casual Shirts</mat-list-item>
+            <mat-list-item routerLink="men/men-formal-shirt">Formal Shirts</mat-list-item>
+            <mat-list-item routerLink="men/men-sweat-shirt">Sweatshirts</mat-list-item>
+            <mat-list-item routerLink="men/men-sweaters">Sweaters</mat-list-item>
+            <mat-list-item routerLink="men/men-jackets">Jackets</mat-list-item>
+            <mat-list-item routerLink="men/men-blazers-coats">Blazers & Coats</mat-list-item>
+            <mat-list-item routerLink="men/men-suits">Suits</mat-list-item>
+            <mat-list-item routerLink="men/men-rain-jackets">Rain Jackets</mat-list-item>
+        </mat-list>
+    </mat-menu> -->
+    <div class="spacer"></div>
+    <!-- <mat-form-field class="example-form-field" appearance="fill" style="width: 600px">
+        <input matInput type="text" #searchVal>
+        <button mat-icon-button matSuffix aria-label="Clear">
+            <mat-icon>search</mat-icon>
+        </button>
+    </mat-form-field> -->
+    <div>
+        <button mat-button *ngIf="!dservice.isloggedin()" routerLink="/register">
+            <b> LOGIN </b>
+            <mat-icon>login</mat-icon>
+        </button>
+
+        <button mat-button *ngIf="dservice.isloggedin()" routerLink="/posts" (click)="logout()">
+            <b> LOGOUT </b> <mat-icon>logout</mat-icon>
+        </button>
+    </div>
+    <div>
+        <button mat-button [matMenuTriggerFor]="profile" class="menustyle">
+            <b>Profile</b>
+            <mat-icon>
+                person
+            </mat-icon>
+        </button>
+        <!-- <span>Profilr</span> -->
+    </div>
+    <mat-menu #profile="matMenu">
+        <mat-list role="list" class="menu shake" style="width: 200px;overflow-x: hidden;">
+            <mat-list-item routerLink="/cart" >Cart</mat-list-item>
+            <!-- <mat-list-item >wishlist</mat-list-item> -->
+            <mat-list-item routerLink="/savedCard" >Saved Cards</mat-list-item>
+            <mat-list-item routerLink="/savedUpi" >Saved UPI</mat-list-item>
+            <mat-list-item  routerLink="/subscription" >Subscriptions</mat-list-item>
+            <mat-list-item  routerLink="/users" >Users</mat-list-item>
+        </mat-list>
+    </mat-menu>
+    <!-- <div>
+        [matBadge]="dservice.wlCount"
+        <button mat-icon-button>
+            <mat-icon matBadgeColor="warn">
+                favorite_border
+            </mat-icon></button><br />
+        <span>wishlist</span>
+    </div> -->
+    <div>
+        <!-- [matBadge]="cartValue" -->
+        <button mat-icon-button (click)="showCart()">
+            <mat-icon matBadgeColor="warn">
+                add_shopping_cart</mat-icon>
+        </button>
+        <div>
+            <!-- <span>Bag</span> -->
+        </div>
+    </div>
+</mat-toolbar>
+<!-- <div fxLayout="column" >
+    <mat-list role="list" class="menu shake" style="width: 300px;overflow: hidden;">
+        <p style="color: red">Topwear</p>
+        <mat-list-item routerLink="men/men-tshirt">T-shirts</mat-list-item>
+        <mat-list-item routerLink="men/men-casual-shirt">Casual Shirts</mat-list-item>
+        <mat-list-item routerLink="men/men-formal-shirt">Formal Shirts</mat-list-item>
+        <mat-list-item routerLink="men/men-sweat-shirt">Sweatshirts</mat-list-item>
+        <mat-list-item routerLink="men/men-sweaters">Sweaters</mat-list-item>
+        <mat-list-item routerLink="men/men-jackets">Jackets</mat-list-item>
+        <mat-list-item routerLink="men/men-blazers-coats">Blazers & Coats</mat-list-item>
+        <mat-list-item routerLink="men/men-suits">Suits</mat-list-item>
+        <mat-list-item routerLink="men/men-rain-jackets">Rain Jackets</mat-list-item>
+    </mat-list>
+</div> -->

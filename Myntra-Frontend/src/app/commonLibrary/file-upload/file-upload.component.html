@@ -1,0 +1,79 @@
+<!-- <div>
+    <div *ngIf="preview == 'none'" fxLayout="row">
+        <div fxLayout="column" *ngIf="empty">
+            <button type="button" id="{{id1}}btn" mat-stroked-button color="accent" [disabled]="disabled" (click)="i1.click()"
+                class="btnclick" [ngClass]="disabled ? 'attchmentDisabled': 'attchment'">
+                <input hidden type="file" accept="{{acceptedType}}" name="{{id1}}" #i1 (change)="uploadFile($event,1)"
+                    ngDefaultControl required="{{isRequired}}" />
+                <mat-icon [ngClass]="disabled ? 'primary': 'accent'">attach_file</mat-icon>{{label}} <span style="color: red;" *ngIf="isRequired">
+                    *</span>
+            </button>
+            <mat-hint class="r-12-v1 upload-hint" *ngIf="!disabled">{{hints}}&nbsp;({{docupload[3]}})</mat-hint>
+        </div>
+        <mat-spinner *ngIf="loading" [diameter]="32" fxFlexOffset="32px" color="accent"></mat-spinner>
+        <span>&nbsp;&nbsp;</span>
+        <div *ngIf="!empty">
+            <mat-chip-listbox #chipList class="downloadFileChip">
+                <mat-chip-option id="{{id1}}dwld" (click)="downloadFile()" [removable]="removable" ngDefaultControl>
+                    <span class="text-overflow"> {{value?.name}}</span>
+                    <mat-icon matChipRemove *ngIf="!disabled" (click)="removeFile()">cancel</mat-icon>
+                </mat-chip-option>
+            </mat-chip-listbox>
+        </div>
+    </div>
+    <div *ngIf="preview == 'circle'" class="img-container">
+        <div *ngIf="empty">
+            <img src="../assets/images/profilepic-placeholder.svg" alt="" class="circle-empty-img">
+            <mat-icon class="circle-empty-img material-symbols-outlined default-img-icon" color="primary">
+                account_circle</mat-icon>
+        </div>
+        <div *ngIf="!empty" (mouseenter)="mouseEvent=true" (mouseleave)="mouseEvent=false">
+            <img [src]="getImage" alt="" class="circle-empty-img">
+        </div>
+        <button type="button" mat-icon-button color="accent" class="edit-btn" [matMenuTriggerFor]="edit" [disabled]='disabled'
+            [ngStyle]="isEdit ? {'display':'block'} : {'display':'none'}">
+            <span class="edit-icon">
+                <mat-icon>edit</mat-icon>
+            </span>
+        </button>
+        <button type="button" mat-icon-button class="edit-btn-circle" [matMenuTriggerFor]="edit"
+            [disabled]='disabled' [ngStyle]="isEdit ? {'display':'block'} : {'display':'none'}">
+            <mat-icon>edit</mat-icon>
+        </button>
+        <mat-menu #edit="matMenu">
+            <button type="button" mat-menu-item (click)='i2.click()'>
+                <span>{{docupload[0]}}</span>
+                <input hidden type="file" accept="{{acceptedType}}" name="i2" #i2 (change)="uploadFile($event,2)"
+                    ngDefaultControl />
+            </button>
+            <button type="button" mat-menu-item (click)='removeFile()'>
+                <span>{{docupload[1]}}</span>
+            </button>
+        </mat-menu>
+
+
+    </div>
+    <div *ngIf="preview == 'square'" class="img-container">
+        <div *ngIf="empty">
+            <img [src]="" alt="" class="empty-img" class="square-empty-img">
+        </div>
+        <div *ngIf="!empty" (mouseenter)="mouseEvent=true" (mouseleave)="mouseEvent=false">
+            <img [src]="getImage" alt="" class="square-empty-img">
+        </div>
+        <button type="button" mat-icon-button class="sqare-edit-btn" [matMenuTriggerFor]="edit" [disabled]='disabled'>
+            <span class="sqare-edit-icon">
+                <mat-icon>edit</mat-icon>
+            </span>
+        </button>
+        <mat-menu #edit="matMenu">
+            <button type="button" mat-menu-item (click)='i3.click()'>
+                <span>{{docupload[0]}}</span>
+                <input hidden type="file" accept="{{acceptedType}}" name="i3" #i3 (change)="uploadFile($event,3)"
+                    ngDefaultControl />
+            </button>
+            <button type="button" mat-menu-item (click)='removeFile()'>
+                <span>{{docupload[1]}}</span>
+            </button>
+        </mat-menu>
+    </div>
+</div> -->

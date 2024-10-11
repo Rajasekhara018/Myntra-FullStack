@@ -1,0 +1,129 @@
+@use "@angular/material" as mat;
+
+.default-img-icon {
+    width: 160px;
+    height: 160px;
+    font-size: 160px;
+}
+
+
+.img-container {
+    position: relative;
+}
+
+img {
+    width: 160px;
+    height: 160px;
+}
+
+.img-overlay {
+    display: inline-block;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 0;
+    border-radius: 10%;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+}
+
+.overlay-elements {
+    color: rgb(110, 103, 103);
+}
+
+.edit-btn {
+    background-color: #ffb74d;
+    position: relative;
+    left: 115px;
+    bottom: 40px;
+    min-width: 32px;
+    height: 32px;
+    width: 32px;
+}
+
+.edit-icon {
+    position: relative;
+    left: 0px;
+    top: 3px;
+    width: 20px;
+    height: 20px;
+}
+
+.edit-btn-circle {
+    position: absolute;
+    right: -24px;
+    bottom: 16px;
+}
+
+.sqare-edit-btn {
+    background-color: #ffb74d;
+    position: relative;
+    left: 140px;
+    bottom: 30px;
+    min-width: 32px;
+    height: 32px;
+    width: 32px;
+}
+
+.sqare-edit-icon {
+    position: relative;
+    left: 1px;
+    top: 3px;
+    width: 20px;
+    height: 20px;
+}
+
+.empty-img {
+    box-shadow: 0 1px 3px 0 var(--black-16);
+    border: solid 2px rgba(255, 183, 77, 0.64);
+}
+
+/* .circle-empty-img {
+    border-radius: 50% !important;
+    box-shadow: 0 1px 3px 0 var(--black-16);
+    border: solid 2px rgba(255, 183, 77, 0.64);
+} */
+
+.circle-empty-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50% !important;
+    box-shadow: 0 1px 3px 0 var(--black-16);
+}
+
+.square-empty-img {
+    box-shadow: 0 1px 3px 0 var(--black-16);
+    border: solid 2px rgba(255, 183, 77, 0.64);
+}
+
+.attchment {
+    border: 1px solid #e65100;
+    border-radius: 0;
+    border-radius: 5px;
+    text-transform: uppercase;
+    color: #e65100;
+}
+.attchmentDisabled {
+    border: 1px solid #ddd;
+    border-radius: 0;
+    border-radius: 5px;
+    text-transform: uppercase;
+    color: #ddd;
+}
+.upload-hint {
+    padding: 8px 8px;
+    font-size: 10px !important;
+}
+
+.downloadFileChip {
+    padding: 5px 0 !important;
+}
+
+.text-overflow {
+    max-width: 100px !important;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}

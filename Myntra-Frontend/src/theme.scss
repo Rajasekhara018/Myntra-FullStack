@@ -1,0 +1,599 @@
+@use '@angular/material' as mat;
+@include mat.core();
+@import '../node_modules/@angular/material/theming';
+
+//Light Theme
+// 10 is 7% of white color opacity
+$mat-accent-scheme: (
+    50: #fce4ec,
+    100: #f8bbd0,
+    200: #f48fb1,
+    300: #f06292,
+    400: #ec407a,
+    // 500: #e91e63,
+    500:#ae285d,
+    600: #d81b60,
+    700: #c2185b,
+    800: #ad1457,
+    900: #880e4f,
+    A100: #ff80ab,
+    A200: #ff4081,
+    A400: #f50057,
+    A700: #c51162,
+    contrast: (50: $dark-primary-text,
+        100: $dark-primary-text,
+        200: $dark-primary-text,
+        300: $dark-primary-text,
+        400: $dark-primary-text,
+        500: $light-primary-text,
+        600: $light-primary-text,
+        700: $light-primary-text,
+        800: $light-primary-text,
+        900: $light-primary-text,
+        A100: $dark-primary-text,
+        A200: $light-primary-text,
+        A400: $light-primary-text,
+        A700: $light-primary-text,
+    )
+);
+$mat-primary-scheme: (
+    11:#ffffff,
+    87: #ffffffde,
+    7: #ffffff12,
+    10: #ffffff1A,
+    50: #fafafa,
+    100:#f5f5f5,
+    200:#eeeeee,
+    300: #e0e0e0,
+    400: #bdbdbd,
+    500: #9e9e9e,
+    600: #757575,
+    700: #616161,
+    800: #424242,
+    900: #212121,
+    950: #121212,
+    contrast: (11: rgba(0, 0, 0, 0.9),
+        87: rgba(0, 0, 0, 0.7),
+        7: rgba(255, 255, 255, 0.87),
+        50: rgba(0, 0, 0, 0.7),
+        100: rgba(0, 0, 0, 0.7),
+        200: rgba(0, 0, 0, 0.7),
+        300: rgba(0, 0, 0, 0.7),
+        400: rgba(0, 0, 0, 0.7),
+        500: rgba(0, 0, 0, 0.7),
+        600: rgba(255, 255, 255, 0.87),
+        700: rgba(255, 255, 255, 0.87),
+        800: rgba(255, 255, 255, 0.87),
+        900: rgba(255, 255, 255, 0.87),
+        950: rgba(255, 255, 255, 0.87),
+    )
+);
+
+// For Elevation 0 and 1 use 25 and 26
+$mat-z-elvtn-bgcolor: (
+    25: #121212,
+    26: #1e1e1e,
+    2: #222222,
+    3: #242424,
+    4: #272727,
+    6: #2b2b2b,
+    8: #2e2e2e,
+    12: #333333,
+    16: #353535,
+    24: #373737,
+    27: #352c1f,
+    // this colour  is for secondary header (elevation Z2)for higher prominence eg. SR, Application view
+    100: #352c1f,
+    500: #352c1f,
+    700: #352c1f,
+    contrast: (25: #ffffffde,
+        26: #ffffffde,
+        2: #ffffffde,
+        3: #ffffffde,
+        4: #ffffffde,
+        6: #ffffffde,
+        8: #ffffffde,
+        12: #ffffffde,
+        16: #ffffffde,
+        24: #ffffffde,
+        27: #ffffffde,
+        100: #ffffffde,
+        500: #ffffffde,
+        700: #ffffffde,
+    )
+);
+
+$my-app-primary: mat.define-palette($mat-primary-scheme);
+$my-app-accent: mat.define-palette($mat-accent-scheme);
+$my-app-warn: mat.define-palette(mat.$red-palette);
+$my-app-z-elvtn-bg: mat.define-palette($mat-z-elvtn-bgcolor);
+// $background: mat.$light-theme-background-palette;
+// $foreground: mat.$light-theme-foreground-palette;
+$my-app-theme: mat-light-theme((color: (primary: $my-app-primary,
+                accent: $my-app-accent,
+                warn: $my-app-warn,
+            ),
+            typography: mat.define-typography-config(),
+            density: 0,
+        ));
+@include mat.core-theme($my-app-theme);
+@include mat.all-component-themes($my-app-theme);
+@include mat.strong-focus-indicators-theme($my-app-theme);
+
+// Dark Theme
+$mat-primary-scheme2: (
+  11:#ffffff,
+  87: #ffffffde,
+  50: #fafafa,
+  100:#f5f5f5,
+  200:#eeeeee,
+  300: #e0e0e0,
+  400: #bdbdbd,
+  500: #9e9e9e,
+  600: #757575,
+  700: #616161,
+  800: #424242,
+  900: #212121,
+  contrast: (100: rgba(0, 0, 0, 0.87),
+    500: rgba(0, 0, 0, 0.87),
+    700: #fff,
+  )
+);
+$mat-accent-scheme2: (
+  50: #fff3e0,
+  100: #ffe0b2,
+  200: #ffcc80,
+  300: #ffb74d,
+  400: #ffa726,
+  500: #ff9800,
+  600: #fb8c00,
+  700: #f57c00,
+  800: #ef6c00,
+  900: #e65100,
+  contrast: (100: rgba(0, 0, 0, 0.87),
+    500: rgba(0, 0, 0, 0.87),
+    700: rgba(0, 0, 0, 0.87),
+  )
+);
+$alternate-primary: mat.define-palette($mat-primary-scheme2);
+$alternate-accent: mat.define-palette($mat-accent-scheme2);
+$alternate-warn: mat.define-palette(mat.$red-palette);
+
+// $foreground: mat.$dark-theme-foreground-palette;
+$alternate-theme: mat.define-dark-theme((color: (primary: $alternate-primary,
+        accent: $alternate-accent,
+        warn:$alternate-warn ),
+      typography: mat.define-typography-config(),
+      density: 0));
+
+
+.alternate-theme {
+  @include mat.core-theme($alternate-theme);
+  @include mat.all-component-themes($alternate-theme);
+  @include mat.strong-focus-indicators-theme($alternate-theme)
+}
+
+@media (prefers-color-scheme: light) {
+  @include angular-material-color($my-app-theme);
+}
+//Light Theme
+// 10 is 7% of white color opacity
+
+// $mat-primary-scheme: (
+//   11:#ffffff,
+//   87: #ffffffde,
+//   7: #ffffff12,
+//   10: #ffffff1A,
+//   50: #fafafa,
+//   100:#f5f5f5,
+//   200:#eeeeee,
+//   300: #e0e0e0,
+//   400: #bdbdbd,
+//   500: #9e9e9e,
+//   600: #757575,
+//   700: #616161,
+//   800: #424242,
+//   900: #212121,
+//   950: #121212,
+//   contrast: (11: rgba(0, 0, 0, 0.9),
+//     87: rgba(0, 0, 0, 0.7),
+//     7: rgba(255, 255, 255, 0.87),
+//     50: rgba(0, 0, 0, 0.7),
+//     100: rgba(0, 0, 0, 0.7),
+//     200: rgba(0, 0, 0, 0.7),
+//     300: rgba(0, 0, 0, 0.7),
+//     400: rgba(0, 0, 0, 0.7),
+//     500: rgba(0, 0, 0, 0.7),
+//     600: rgba(255, 255, 255, 0.87),
+//     700: rgba(255, 255, 255, 0.87),
+//     800: rgba(255, 255, 255, 0.87),
+//     900: rgba(255, 255, 255, 0.87),
+//     950: rgba(255, 255, 255, 0.87),
+//   )
+// );
+
+// $mat-accent-scheme: (
+//   16: #ffb74d29,
+//   50: #fff3e0,
+//   100: #ffe0b2,
+//   200: #ffcc80,
+//   300: #ffb74d,
+//   400: #ffa726,
+//   500: #ff9800,
+//   600: #fb8c00,
+//   700: #f57c00,
+//   800: #ef6c00,
+//   900: #e65100,
+
+//   contrast: (16: #ffffffde,
+//     50: #ffffffde,
+//     100: #ffffffde,
+//     200: #ffffffde,
+//     300: #000,
+//     400: #ffffffde,
+//     500: #000,
+//     600: #ffffffde,
+//     700: #ffffffde,
+//     800: #ffffffde,
+//     900: #ffffffde,
+//   )
+// );
+
+// // For Elevation 0 and 1 use 25 and 26
+// $mat-z-elvtn-bgcolor: (
+//   25: #121212,
+//   26: #1e1e1e,
+//   2: #222222,
+//   3: #242424,
+//   4: #272727,
+//   6: #2b2b2b,
+//   8: #2e2e2e,
+//   12: #333333,
+//   16: #353535,
+//   24: #373737,
+//   27: #352c1f,
+//   // this colour  is for secondary header (elevation Z2)for higher prominence eg. SR, Application view
+//   100: #352c1f,
+//   500: #352c1f,
+//   700: #352c1f,
+//   contrast: (25: #ffffffde,
+//     26: #ffffffde,
+//     2: #ffffffde,
+//     3: #ffffffde,
+//     4: #ffffffde,
+//     6: #ffffffde,
+//     8: #ffffffde,
+//     12: #ffffffde,
+//     16: #ffffffde,
+//     24: #ffffffde,
+//     27: #ffffffde,
+//     100: #ffffffde,
+//     500: #ffffffde,
+//     700: #ffffffde,
+//   )
+// );
+// $my-app-primary: mat.define-palette($mat-primary-scheme);
+// $my-app-accent: mat.define-palette($mat-accent-scheme);
+// $my-app-warn: mat.define-palette(mat.$red-palette);
+// $my-app-z-elvtn-bg: mat.define-palette($mat-z-elvtn-bgcolor);
+
+// // $background: mat.$light-theme-background-palette;
+// // $foreground: mat.$light-theme-foreground-palette;
+
+// $my-app-theme: mat-light-theme((color: (primary: $my-app-primary,
+//         accent: $my-app-accent,
+//         warn:$my-app-warn ),
+//       typography: mat.define-typography-config(),
+//       density: 0));
+// @include mat.core-theme($my-app-theme);
+// @include mat.all-component-themes($my-app-theme);
+// @include mat.strong-focus-indicators-theme($my-app-theme);
+
+// //Dark Theme
+// $mat-primary-scheme2: (
+//   11:#ffffff,
+//   87: #ffffffde,
+//   50: #fafafa,
+//   100:#f5f5f5,
+//   200:#eeeeee,
+//   300: #e0e0e0,
+//   400: #bdbdbd,
+//   500: #9e9e9e,
+//   600: #757575,
+//   700: #616161,
+//   800: #424242,
+//   900: #212121,
+//   contrast: (100: rgba(0, 0, 0, 0.87),
+//     500: rgba(0, 0, 0, 0.87),
+//     700: #fff,
+//   )
+// );
+// $mat-accent-scheme2: (
+//   50: #fff3e0,
+//   100: #ffe0b2,
+//   200: #ffcc80,
+//   300: #ffb74d,
+//   400: #ffa726,
+//   500: #ff9800,
+//   600: #fb8c00,
+//   700: #f57c00,
+//   800: #ef6c00,
+//   900: #e65100,
+//   contrast: (100: rgba(0, 0, 0, 0.87),
+//     500: rgba(0, 0, 0, 0.87),
+//     700: rgba(0, 0, 0, 0.87),
+//   )
+// );
+// $alternate-primary: mat.define-palette($mat-primary-scheme2);
+// $alternate-accent: mat.define-palette($mat-accent-scheme2);
+// $alternate-warn: mat.define-palette(mat.$red-palette);
+
+// // $foreground: mat.$dark-theme-foreground-palette;
+// $alternate-theme: mat.define-dark-theme((color: (primary: $alternate-primary,
+//         accent: $alternate-accent,
+//         warn:$alternate-warn ),
+//       typography: mat.define-typography-config(),
+//       density: 0));
+
+
+// .alternate-theme {
+//   @include mat.core-theme($alternate-theme);
+//   @include mat.all-component-themes($alternate-theme);
+//   @include mat.strong-focus-indicators-theme($alternate-theme)
+// }
+
+// @media (prefers-color-scheme: light) {
+//   @include angular-material-color($my-app-theme);
+// }
+
+
+$font-family: 'Exo 2', sans-serif !default;
+$font-family-heading: 'Roboto Slab', serif !default;
+$regularTextColor: #333333;
+$foreground-color:	 #bfbfbf;
+$preground-color:#b1b1b1;
+$modal-background-color:#EEEEEE;
+$font-color:#616364;
+$container-bg: #f1f2f7;
+$header-color: #00acc1;
+$header-bg: #fff;
+$menu-color: #272c33;
+$navigation-bg:  #43425D;
+$onhover-bg:  #3C3B54;
+$active-link:  #A5A4BF;
+$onhover-link-text:  #A3A0FB;
+$h3-header:#898989;
+$primary-color:white;
+$background-color:gainsboro;
+$light-background-color:#EEEEEE;
+$link-color:#337ab7;
+$border-color:gray;
+$border-dark: #dddddd;
+$btn-font:black;
+$mandatory-color:red;
+$brand-primary: #DDDDDD;
+$light-background-color:#EEEEEE;
+$Error-background-color:#F9DEDE;
+$Warn-background-color:#FFF1D2;
+$success-background-color:#E7F4E4;
+$crumb-color:#e8e8ea;
+$crumb-active-color:#A5A4BF;
+$success-color:#4CAF50;
+$bread-crumb-dynamic-arrow-color:#333333;
+$topnav-background-color: $foreground-color;
+// $custom-primary: mat.define-palette(mat.$blue-palette, 900);
+// $custom-accent: mat.define-palette(mat.$deep-purple-palette, 500);
+// $custom-warn: mat.define-palette(mat.$red-palette);
+// $custom-theme: mat.define-light-theme($custom-primary, $custom-accent, $custom-warn);
+$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+$font-size-lg:                ($font-size-base * 1.25) !default;
+$font-small: 12px;
+$spacer: 1rem !default;
+$spacers: (
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: ($spacer * 1),
+  4: ($spacer * 1.5),
+  5: ($spacer * 3),
+  6: ($spacer * 3.5),
+  7: ($spacer * 4),
+  8: ($spacer * 4.5)
+) !default;
+
+$step-baseline: .5em;
+$step-breakpoint: 767px;
+
+
+$wizard-step-width-height: 45px !default;
+$wizard-step-font-size: 14px !default;
+
+
+// mixins
+@mixin transition($args) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+@mixin border-radius($radius) {
+	border-radius: $radius;
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+}
+
+@mixin box-shadow($radius) {
+	box-shadow: $radius;
+	-webkit-box-shadow: $radius;
+	-moz-box-shadow: $radius;
+}
+
+@mixin transform($radius) {
+	transform: $radius;
+	-webkit-transform: $radius;
+	-moz-transform: $radius;
+}
+
+@mixin vertical-center {
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin fancy-scroll-v {
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      background: themed("leftPanelScrollBarTrack");
+    }
+    &::-webkit-scrollbar-thumb {
+      background: themed("leftPanelScrollBarThumb");
+    }
+}
+
+
+/*
+ * Theme definitions
+ */
+ 
+ $themes: (
+   skyblue: (
+     baseColor: #1375bb,
+     hoverColor:#0769ab,
+     hoverTextColor: #FFFFFF,
+     regularTextColor: #000000,
+     headingTextColor: #000000,
+     landingHeaderBg:  linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 23%, rgba(86,169,247,1) 47%, rgba(86,169,247,1) 100%), 
+     matLabel: #999999,
+     defaultFontSize: 14px,
+     headingFontSize: 24px,
+     subHeadingFontSize: 20px,
+     buttonColor: linear-gradient(to bottom, #3a8bc2, #0769ab),
+     buttonHoverColor: linear-gradient(to bottom, #238dd3, #0769ab),
+     buttonHoverLine: linear-gradient(to bottom, #80c2ee, #1881c7),
+     btnBorder: 1px solid #3a8bc2,
+     btnBorderDark: 1px solid #0769ab,
+     sideNavBorderBottom: solid 1px #ffffff38,
+     svgFilterBaseColor: invert(46%) sepia(39%) saturate(859%) hue-rotate(161deg) brightness(98%) contrast(80%),
+     svgFilterHoverColor: invert(18%) sepia(65%) saturate(7349%) hue-rotate(193deg) brightness(96%) contrast(94%),
+     lightBorder: 1px solid #007bff3d,
+     mappingTableBg: #dbf0ff,
+     boxLightBg: #3a8bc224,
+     registerGradient: linear-gradient(to bottom, #025286 0%, #3a8bc2 100%),
+     landingPageHeaderGradient: linear-gradient(to bottom, rgba(201,228,245,1) 0%, rgba(157,183,201,1) 100%),
+     landingCardbodyBg: #d7e7f1,
+     leftPanelScrollBarThumb : #1b83ca,
+     leftPanelScrollBarTrack : #dedee6,
+     getBannerGradient: opacity(1) hue-rotate(681deg),
+     borderColor: 1px solid #EAEAEA,
+     svgFilterWhite: brightness(0) invert(1),
+     svgFilterBlack: brightness(1) invert(1),
+     userDropDownText: #FFF,
+     subNavHoverBg: rgb(225, 240, 250),
+     subNavHoverColor: #666,
+     mediaCard: #002a47,
+   ),
+  blueGreen: (
+     baseColor: #0e3f60,
+     hoverColor:#00a650,
+     hoverTextColor: #FFFFFF,
+     regularTextColor: #000000,
+     headingTextColor: #000000,
+     landingHeaderBg: #fffcd6,
+     matLabel: #999999,
+     defaultFontSize: 14px,
+     headingFontSize: 24px,
+     subHeadingFontSize: 20px,
+     buttonColor: linear-gradient(to bottom, #00a650, #15834a),
+     buttonHoverColor: linear-gradient(to bottom, #0fc466, #39835c),
+     buttonHoverLine: linear-gradient(to top, #00ff79, #00ff79),
+     btnBorder: 1px solid #90a1bc,
+     btnBorderDark: 1px solid #475069,
+     sideNavBorderBottom: solid 1px #47506949,
+     svgFilterBaseColor: invert(40%) sepia(61%) saturate(4070%) hue-rotate(131deg) brightness(97%) contrast(102%),
+     svgFilterHoverColor: invert(35%) sepia(63%) saturate(3081%) hue-rotate(132deg) brightness(98%) contrast(101%),
+     lightBorder: 1px solid #785aa62f,
+     mappingTableBg: #fffcd6,
+     boxLightBg: #4750692d,
+     registerGradient: #90a1bc,
+     landingPageHeaderGradient:linear-gradient(to bottom, rgb(191, 200, 226) 0%, rgb(179, 196, 226) 100%),
+     landingCardbodyBg: #4750693b,
+     leftPanelScrollBarThumb : #00a650,
+     leftPanelScrollBarTrack : #dedee6,
+     getBannerGradient: opacity(1) hue-rotate(4291deg),
+     borderColor: 1px solid #EAEAEA,
+     svgFilterWhite: brightness(0) invert(1),
+     svgFilterBlack: brightness(1) invert(1),
+     userDropDownText: #000,
+     subNavHoverBg: #00a650,
+     subNavHoverColor: #FFF,
+     mediaCard: #0e3f60,
+  )
+  
+  
+);
+
+/*
+ * Implementation of themes
+ */
+
+ @mixin themify($themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
+// selectTheme(event) {
+//     if (event.value != "") {
+//       if (document.getElementById('dynamicTheme')) {
+//         document.getElementById('dynamicTheme').setAttribute("class", event.value);
+//       }
+//     }
+//     else {
+//       this.getTheme();
+//     }
+//   }
+//   getTheme() {
+//     this.commonService.getThemeColor().subscribe(
+//       res => {
+//         if (res.ThemeColour) {
+//           if (document.getElementById('dynamicTheme')) {
+//             document.getElementById('dynamicTheme').setAttribute("class", res.ThemeColour);
+//           }
+//         }
+//         if (localStorage.getItem('themeColor')) {
+//           let themeColor = localStorage.getItem('themeColor');
+//           document.getElementById('dynamicTheme').setAttribute("class", themeColor);
+//         }
+//       },
+//       error => {
+//         console.log(error);
+//         if (document.getElementById('dynamicTheme')) {
+//           document.getElementById('dynamicTheme').setAttribute("class", "theme-skyblue");
+//         }
+//         if (localStorage.getItem('themeColor')) {
+//           let themeColor = localStorage.getItem('themeColor');
+//           document.getElementById('dynamicTheme').setAttribute("class", themeColor);
+//         }
+
+//       }
+//     )
+//   }
+
+// theme-skyblue
