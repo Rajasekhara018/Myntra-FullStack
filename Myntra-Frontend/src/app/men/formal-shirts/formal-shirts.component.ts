@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { PostService } from 'src/app/services/post.service';
-import { Cart, shoppingCart } from 'src/model';
+import { PostService } from '../../services/post.service';
+import { shoppingCart } from '../../../model';
+
 @Component({
   selector: 'app-formal-shirts',
   templateUrl: './formal-shirts.component.html',
@@ -77,7 +78,7 @@ export class FormalShirtsComponent {
   }
   removeWishList(data: any) {
     if (this.service?.searchArray?.length > 0) {
-      this.service?.searchArray?.forEach(ele => {
+      this.service?.searchArray?.forEach((ele:any) => {
         if (ele.id === data.id) {
           ele.iswl = false;
           this.service.wlCount = this.service.wlCount - 1;

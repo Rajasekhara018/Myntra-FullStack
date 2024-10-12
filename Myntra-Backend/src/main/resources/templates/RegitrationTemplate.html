@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registration Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            max-width: 150px;
+        }
+        .content {
+            line-height: 1.6;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+<!--        <img th:src="@{images/Myntra-Logo.png}" alt="Myntra Logo">-->
+        <img th:src="@{cid:myntraLogo}" alt="Myntra Logo">
+    </div>
+    <div class="content">
+        <h2>Welcome to Myntra - Registration Confirmation</h2>
+        <p>Dear <span th:text="${userName}"></span>,</p>
+        <p>Welcome to Myntra!</p>
+        <p>We are excited to confirm your successful registration. Below are your login details:</p>
+        <ul>
+            <li><strong>Username:</strong> <span th:text="${userName}"></span></li>
+            <li><strong>Email:</strong> <span th:text="${email}"></span></li>
+            <li><strong>Registration Date:</strong> <span th:text="${registrationDate}"></span></li>
+        </ul>
+        <p>You can now log in to your account and start exploring all the features we offer. If you have any questions or need assistance, please do not hesitate to reach out to our support team.</p>
+        <p>Thank you for joining us, and we look forward to providing you with an excellent experience.</p>
+        <p>Best regards,</p>
+        <p>
+<!--            <span th:text="${yourFullName}">[Your Full Name]</span><br>-->
+<!--            <span th:text="${yourPosition}">[Your Position]</span><br>-->
+<!--            <span th:text="${yourContactInformation}">[Your Contact Information]</span><br>-->
+            Myntra Support Team</p>
+    </div>
+    <div class="footer">
+        © 2024 Myntra. All rights reserved.
+    </div>
+</div>
+</body>
+</html>

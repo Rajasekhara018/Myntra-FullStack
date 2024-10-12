@@ -36,7 +36,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatNativeDateModule } from '@angular/material/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
+// import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 
 
@@ -89,7 +89,7 @@ import { FormsModule } from '@angular/forms';
     MatTableModule,
     MatNativeDateModule,
     FormsModule,
-    FlexLayoutModule,
+    // FlexLayoutModule,
 
 
   ],
@@ -136,7 +136,7 @@ import { FormsModule } from '@angular/forms';
     MatTableModule,
     MatNativeDateModule,
     FormsModule,
-    FlexLayoutModule,
+    // FlexLayoutModule,
 
 
   ]

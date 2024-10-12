@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ErrorMessageModule, Login, Registration } from 'src/model';
 import { PostService } from '../services/post.service';
 import { Router } from '@angular/router';
 import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
@@ -9,6 +8,7 @@ import { every } from 'rxjs';
 import { animate } from '@angular/animations';
 import { CommonServiceService } from '../services/common-service.service';
 import { CryptoGraphService } from '../services/crypto-graph.service';
+import { ErrorMessageModule, Login, Registration } from '../../model';
 
 @Component({
   selector: 'app-auth',

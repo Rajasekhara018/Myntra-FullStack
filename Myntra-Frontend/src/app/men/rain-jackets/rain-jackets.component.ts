@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { PostService } from 'src/app/services/post.service';
-import { Cart, shoppingCart } from 'src/model';
+import { PostService } from '../../services/post.service';
+import { shoppingCart } from '../../../model';
+
 @Component({
   selector: 'app-rain-jackets',
   templateUrl: './rain-jackets.component.html',

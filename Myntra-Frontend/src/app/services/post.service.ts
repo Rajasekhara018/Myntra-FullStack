@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angul
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError, Observable } from 'rxjs';
-import { ErrorMessageModule, ResObjectModule } from 'src/model';
+import { ErrorMessageModule, ResObjectModule } from '../../model';
 
 @Injectable({
   providedIn: 'root'

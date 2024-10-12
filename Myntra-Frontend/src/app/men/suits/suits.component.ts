@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { PostService } from 'src/app/services/post.service';
-import { Cart, shoppingCart } from 'src/model';
+import { PostService } from '../../services/post.service';
+import { shoppingCart } from '../../../model';
 @Component({
   selector: 'app-suits',
   templateUrl: './suits.component.html',
@@ -21,7 +21,7 @@ export class SuitsComponent {
     this.service.getAlldata(apiURL).subscribe((response: any) => {
       this.tShirtData = response;
       console.log(response);
-    }, error => {
+    }, (error:any) => {
       console.log(error);
     })
   }
@@ -42,7 +42,7 @@ export class SuitsComponent {
       this.service.postdata(apiUrl, shopCart).subscribe((response) => {
         
         this.snackbar.open('Item Added to Cart', 'Dismiss', { duration: 3000 })
-      }, err => {
+      }, (err:any) => {
         console.log(err);
         this.snackbar.open(err.error, 'Dismiss', { duration: 3000, panelClass: 'snackbar-btn' });
       })
@@ -77,7 +77,7 @@ export class SuitsComponent {
   }
   removeWishList(data: any) {
     if (this.service?.searchArray?.length > 0) {
-      this.service?.searchArray?.forEach(ele => {
+      this.service?.searchArray?.forEach((ele:any) => {
         if (ele.id === data.id) {
           ele.iswl = false;
           this.service.wlCount = this.service.wlCount - 1;

@@ -25,6 +25,7 @@ import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
 import { UsersComponent } from './users/users.component';
 import { AnimationMotionComponent } from './animation-motion/animation-motion.component';
 import { FileUploadComponent } from './commonLibrary/file-upload/file-upload.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 // clientId="256484117374-4jori5u11ocu6abl8tlqo5h6915pnnme.apps.googleusercontent.com"
 
 @NgModule({
@@ -78,7 +79,8 @@ import { FileUploadComponent } from './commonLibrary/file-upload/file-upload.com
           console.error(err);
         }
       } as SocialAuthServiceConfig,
-    }
+    },
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })

@@ -1,9 +1,9 @@
 import { Component, HostListener } from '@angular/core';
 import { PostService } from '../services/post.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { shoppingCart } from 'src/model';
 import { Location, PlatformLocation } from '@angular/common';
 import { Subject, fromEvent, takeUntil } from 'rxjs';
+import { shoppingCart } from '../../model';
 
 @Component({
   selector: 'app-cart',
